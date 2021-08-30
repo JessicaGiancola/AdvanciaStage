@@ -1,0 +1,69 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>EmployeeManagementEJB-Client</groupId>
+  <artifactId>EmployeeManagementEJB-Client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>app-client</packaging>
+  <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-jms-client-bom -->
+	<dependency>
+	    <groupId>org.wildfly</groupId>
+	    <artifactId>wildfly-jms-client-bom</artifactId>
+	    <version>23.0.0.Final</version>
+	    <type>pom</type>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-naming-client -->
+	<dependency>
+	    <groupId>org.wildfly</groupId>
+	    <artifactId>wildfly-naming-client</artifactId>
+	    <version>1.0.0.Final</version>
+	</dependency>
+
+ 	<!-- https://mvnrepository.com/artifact/org.wildfly/wildfly-client-properties -->
+<!-- 	<dependency> -->
+<!-- 	    <groupId>org.wildfly</groupId> -->
+<!-- 	    <artifactId>wildfly-client-properties</artifactId> -->
+<!-- 	    <version>24.0.0.Final</version> -->
+<!-- 	</dependency> -->
+	<!-- https://mvnrepository.com/artifact/org.jboss/jboss-ejb-client -->
+	<dependency>
+	    <groupId>org.jboss</groupId>
+	    <artifactId>jboss-ejb-client</artifactId>
+	    <version>4.0.0.Final</version>
+	</dependency>
+		
+  </dependencies>
+  <build>
+    <sourceDirectory>appClientModule</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>appClientModule</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>8</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-acr-plugin</artifactId>
+        <version>3.1.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Main-Class>Main</Main-Class>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
