@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://soapservice" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://soapservice" xmlns:intf="http://soapservice" xmlns:tns1="http://model" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://soapservice" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://model"/>
+   <element name="getAll">
+    <complexType/>
+   </element>
+   <element name="getAllResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addDough">
+    <complexType>
+     <sequence>
+      <element name="d" type="tns1:Dough"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addDoughResponse">
+    <complexType>
+     <sequence>
+      <element name="addDoughReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addIngredient">
+    <complexType>
+     <sequence>
+      <element name="i" type="tns1:Ingredient"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addIngredientResponse">
+    <complexType>
+     <sequence>
+      <element name="addIngredientReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllDough">
+    <complexType/>
+   </element>
+   <element name="getAllDoughResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllDoughReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://model" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Dough">
+    <sequence>
+     <element name="doughID" type="xsd:int"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Ingredient">
+    <sequence>
+     <element name="ingID" type="xsd:int"/>
+     <element name="ingName" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addIngredientResponse">
+
+      <wsdl:part element="impl:addIngredientResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllDoughResponse">
+
+      <wsdl:part element="impl:getAllDoughResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllResponse">
+
+      <wsdl:part element="impl:getAllResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addIngredientRequest">
+
+      <wsdl:part element="impl:addIngredient" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addDoughResponse">
+
+      <wsdl:part element="impl:addDoughResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addDoughRequest">
+
+      <wsdl:part element="impl:addDough" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllRequest">
+
+      <wsdl:part element="impl:getAll" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllDoughRequest">
+
+      <wsdl:part element="impl:getAllDough" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="PizzeriaSoapServiceImpl">
+
+      <wsdl:operation name="getAll">
+
+         <wsdl:input message="impl:getAllRequest" name="getAllRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllResponse" name="getAllResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addDough">
+
+         <wsdl:input message="impl:addDoughRequest" name="addDoughRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addDoughResponse" name="addDoughResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addIngredient">
+
+         <wsdl:input message="impl:addIngredientRequest" name="addIngredientRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addIngredientResponse" name="addIngredientResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllDough">
+
+         <wsdl:input message="impl:getAllDoughRequest" name="getAllDoughRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllDoughResponse" name="getAllDoughResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="PizzeriaSoapServiceImplSoapBinding" type="impl:PizzeriaSoapServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="getAll">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addDough">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addDoughRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addDoughResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addIngredient">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addIngredientRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addIngredientResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllDough">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllDoughRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllDoughResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="PizzeriaSoapServiceImplService">
+
+      <wsdl:port binding="impl:PizzeriaSoapServiceImplSoapBinding" name="PizzeriaSoapServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/Pizzeria/services/PizzeriaSoapServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

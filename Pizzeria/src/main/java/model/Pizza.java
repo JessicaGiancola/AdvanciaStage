@@ -1,6 +1,7 @@
 
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -23,9 +24,14 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "pizza")
-public class Pizza implements DBInterface{
+public class Pizza implements DBInterface, Serializable{
 	
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "pizzaID")
     private int pizzaID;

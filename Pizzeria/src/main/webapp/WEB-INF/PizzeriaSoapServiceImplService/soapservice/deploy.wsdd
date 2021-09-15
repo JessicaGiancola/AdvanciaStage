@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PizzeriaSoapServiceImplService WSDL service -->
+
+  <service name="PizzeriaSoapServiceImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://soapservice"/>
+      <parameter name="wsdlServiceElement" value="PizzeriaSoapServiceImplService"/>
+      <parameter name="schemaQualified" value="http://soapservice,http://model"/>
+      <parameter name="wsdlServicePort" value="PizzeriaSoapServiceImpl"/>
+      <parameter name="className" value="soapservice.PizzeriaSoapServiceImpl"/>
+      <parameter name="wsdlPortType" value="PizzeriaSoapServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://soapservice" xmlns:retNS="http://soapservice" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAll" qname="operNS:getAll" returnQName="retNS:getAllReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <operation xmlns:operNS="http://soapservice" xmlns:retNS="http://soapservice" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addDough" qname="operNS:addDough" returnQName="retNS:addDoughReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://soapservice" xmlns:tns="http://model" qname="pns:d" type="tns:Dough"/>
+      </operation>
+      <operation xmlns:operNS="http://soapservice" xmlns:retNS="http://soapservice" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="addIngredient" qname="operNS:addIngredient" returnQName="retNS:addIngredientReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://soapservice" xmlns:tns="http://model" qname="pns:i" type="tns:Ingredient"/>
+      </operation>
+      <operation xmlns:operNS="http://soapservice" xmlns:retNS="http://soapservice" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="getAllDough" qname="operNS:getAllDough" returnQName="retNS:getAllDoughReturn" returnType="rtns:string" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="addDough getAll addIngredient getAllDough"/>
+
+      <typeMapping xmlns:ns="http://model" qname="ns:Ingredient" type="java:model.Ingredient" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+      <typeMapping xmlns:ns="http://model" qname="ns:Dough" type="java:model.Dough" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle=""/>
+  </service>
+</deployment>

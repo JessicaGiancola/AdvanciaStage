@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -12,9 +13,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ingredient")
-public class Ingredient implements DBInterface {
+public class Ingredient implements DBInterface, Serializable {
 	
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ingID")
     private int ingID;
